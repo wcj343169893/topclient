@@ -3,13 +3,13 @@
 
 ## 安装
 ``` bash
-$ composer install "mofing/umeng":"~1.1"
+$ composer install "mofing/tao_topclient":"~1.0"
 ```
 或者修改composer.json
 ```
 {
     "require": {
-        "mofing/umeng": "~1.1"
+        "mofing/tao_topclient": "~1.0"
     }
 }
 ```
