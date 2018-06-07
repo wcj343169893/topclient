@@ -1,5 +1,7 @@
 <?php
 namespace Taobao\TopClient\Request;
+use Taobao\TopClient\RequestCheckUtil;
+
 /**
  * TOP API: taobao.wireless.share.tpwd.query request
  * 

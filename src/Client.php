@@ -2,44 +2,46 @@
 namespace Taobao\TopClient;
 
 use Exception;
-
-class TopClient
+class Client
 {
 
     public $appkey;
-
+    
     public $secretKey;
-
+    
     public $gatewayUrl = "http://gw.api.taobao.com/router/rest";
-
+    
     public $format = "xml";
-
+    
     public $connectTimeout;
-
+    
     public $readTimeout;
-
+    
     /**
      * 是否打开入参check*
      */
     public $checkRequest = true;
-
+    
     protected $signMethod = "md5";
-
+    
     protected $apiVersion = "2.0";
-
+    
     protected $sdkVersion = "top-sdk-php-20180326";
-
+    
     public function getAppkey()
     {
         return $this->appkey;
     }
-
+    
     public function __construct($appkey = "", $secretKey = "")
     {
         $this->appkey = $appkey;
         $this->secretKey = $secretKey;
+        if (! defined("TOP_SDK_WORK_DIR")) {
+            define("TOP_SDK_WORK_DIR", "/tmp/");
+        }
     }
-
+    
     protected function generateSign($params)
     {
         ksort($params);
@@ -55,7 +57,7 @@ class TopClient
         
         return strtoupper(md5($stringToBeSigned));
     }
-
+    
     public function curl($url, $postFields = null)
     {
         $ch = curl_init();
@@ -79,11 +81,11 @@ class TopClient
             $postBodyString = "";
             $postMultipart = false;
             foreach ($postFields as $k => $v) {
-                if ("@" != substr($v, 0, 1)) // 判断是不是文件上传
-{
+                // 判断是不是文件上传
+                if ("@" != substr($v, 0, 1)) {
                     $postBodyString .= "$k=" . urlencode($v) . "&";
-                } else // 文件上传用multipart/form-data，否则用www-form-urlencoded
-{
+                } else {
+                    // 文件上传用multipart/form-data，否则用www-form-urlencoded
                     $postMultipart = true;
                     if (class_exists('\CURLFile')) {
                         $postFields[$k] = new \CURLFile(substr($v, 1));
@@ -122,7 +124,7 @@ class TopClient
         curl_close($ch);
         return $reponse;
     }
-
+    
     public function curl_with_memory_file($url, $postFields = null, $fileFields = null)
     {
         $ch = curl_init();
@@ -191,7 +193,7 @@ class TopClient
         curl_close($ch);
         return $reponse;
     }
-
+    
     protected function logCommunicationError($apiName, $requestUrl, $errorCode, $responseTxt)
     {
         $localIp = isset($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
@@ -211,7 +213,7 @@ class TopClient
         );
         $logger->log($logData);
     }
-
+    
     public function execute($request, $session = null, $bestUrl = null)
     {
         $result = new ResultSet();
@@ -319,7 +321,7 @@ class TopClient
         }
         return $respObject;
     }
-
+    
     public function exec($paramsArray)
     {
         if (! isset($paramsArray["method"])) {
@@ -346,9 +348,10 @@ class TopClient
         }
         return $this->execute($req, $session);
     }
-
+    
     private function getClusterTag()
     {
         return substr($this->sdkVersion, 0, 11) . "-cluster" . substr($this->sdkVersion, 11);
     }
 }
+

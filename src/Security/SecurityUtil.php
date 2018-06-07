@@ -1,6 +1,8 @@
 <?php
 namespace Taobao\TopClient\Security;
 
+use Exception;
+
 class SecurityUtil
 {
 
