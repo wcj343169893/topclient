@@ -25,7 +25,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
         // TODO Auto-generated ClientTest::setUp()
-        $this->client = new Client("23825453", "e53453a32e04de9a1fdb2b6f9b5150be");
+        $this->client = new Client("23825453", "e53453a32e04deb21fdb2b6f9b5150be");
         $this->client->format = "json";
     }
 
