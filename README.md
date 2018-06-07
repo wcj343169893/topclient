@@ -3,13 +3,13 @@
 
 ## 安装
 ``` bash
-$ composer install "mofing/tao_topclient":"~1.0"
+$ composer install "mofing/topclient":"~1.0"
 ```
 或者修改composer.json
 ```
 {
     "require": {
-        "mofing/tao_topclient": "~1.0"
+        "mofing/topclient": "~1.0"
     }
 }
 ```
