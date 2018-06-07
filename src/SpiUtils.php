@@ -92,7 +92,7 @@ class SpiUtils{
 
 		$signList = trim($signList);
 		if (strlen($signList) > 0){
-			$params = split(",", $signList);
+			$params = explode(",", $signList);
 			foreach ($_SERVER as $k => $v){
 				if (substr($k, 0, 5) == 'HTTP_'){
 					foreach($params as $kk){
@@ -129,7 +129,7 @@ class SpiUtils{
 
 	private static function checkRemoteIp(){
 		$remoteIp = $_SERVER["REMOTE_ADDR"];
-		foreach ($header_real_ip as $k){
+		foreach ($remoteIp as $k){
 			$realIp = $_SERVER[$k];
 			$realIp = trim($realIp);
 			if(strlen($realIp) > 0 && strcasecmp("unknown",$realIp)){
