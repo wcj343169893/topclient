@@ -1,0 +1,19 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Taobao\\TopClient\\" : "src"
+		}
+	},
+	"name" : "mofing/taobao_topclient",
+	"type" : "lib",
+	"require" : {
+		"php" : ">=5.6"
+	},
+	"description" : "taobao sdk topclient with composer",
+	"keywords" : [
+		"taobao",
+		"sdk",
+		"topclient",
+		"mofing"
+	]
+}
