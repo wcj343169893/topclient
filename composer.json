@@ -1,6 +1,6 @@
 {
 	"name" : "mofing/topclient",
-	"type" : "lib",
+	"type" : "library",
 	"description" : "taobao sdk topclient with composer",
 	"keywords" : [
 		"taobao",
@@ -31,5 +31,8 @@
 			"Taobao\\TopClient\\" : "tests"
 		}
 	},
-	"minimum-stability" : "stable"
+	"prefer-stable" : true,
+	"config" : {
+		"sort-packages" : true
+	}
 }
