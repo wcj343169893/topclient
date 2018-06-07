@@ -1,5 +1,5 @@
 {
-	"name" : "mofing/tao_topclient",
+	"name" : "mofing/topclient",
 	"type" : "lib",
 	"description" : "taobao sdk topclient with composer",
 	"keywords" : [
